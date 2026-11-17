@@ -15,7 +15,7 @@ def digit_network_forward(image, weights, biases):
     for i in range(len(weights)) :
         activations = sigmoid(np.dot(weights[i],activations) + biases[i])
     
-    np.round(activations,4)
+    activations = np.round(activations,4)
     
     digit = 0
     
@@ -23,5 +23,5 @@ def digit_network_forward(image, weights, biases):
         if activations[i]>activations[digit]:
             digit = i
 
-    return list(activations),digit
+    return [float(x) for x in activations],digit
     pass
